@@ -9,21 +9,12 @@ formulario.addEventListener("submit", function (e) {
     let urlAPI = " https://pokeapi.co/api/v2/pokemon/";
     urlAPI = (urlAPI + valorDigitado).toLowerCase();
 
-    let containerImagemResposta = document.getElementById("imgPokemon");
-
-    let containerinformacoesResposta = document.getElementById("informacaoPokemon");
-
 
     fetch(urlAPI)
         .then(resposta => resposta.json())
         .then(function (data) {
-            let informacaoPokemon = 'Nome: ' + maiuscula(data.name) + '<br>';
-            informacaoPokemon = informacaoPokemon + 'Tipo: ' + maiuscula(data.types[0].type.name);
-            containerinformacoesResposta.innerHTML = informacaoPokemon;
-
-            let imagemFrente = "<img src='" + data.sprites.front_default + "'>";
-            let imagemCostas = "<img src='" + data.sprites.back_default + "'>";
-            containerImagemResposta.innerHTML = imagemFrente + imagemCostas;
+            preencherInformacoesPokemon(data);
+            preencherImagemPokemon(data);
         })
         .catch(function (erro) {
             console.log(erro);
@@ -35,6 +26,22 @@ formulario.addEventListener("submit", function (e) {
             }
         })
 })
+
+function preencherInformacoesPokemon(data) {
+    let informacaoPokemon = 'Nome: ' + maiuscula(data.name) + '<br>';
+    informacaoPokemon = informacaoPokemon + 'Tipo: ' + maiuscula(data.types[0].type.name);
+
+    let containerinformacoesResposta = document.getElementById("informacaoPokemon");
+    containerinformacoesResposta.innerHTML = informacaoPokemon;
+}
+
+function preencherImagemPokemon() {
+    let imagemFrente = "<img src='" + data.sprites.front_default + "'>";
+    let imagemCostas = "<img src='" + data.sprites.back_default + "'>";
+
+    let containerImagemResposta = document.getElementById("imgPokemon");
+    containerImagemResposta.innerHTML = imagemFrente + imagemCostas;
+}
 
 function maiuscula(valor) {
     return valor[0].toUpperCase() + valor.substr(1);
