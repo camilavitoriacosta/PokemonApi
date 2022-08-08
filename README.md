@@ -1,4 +1,4 @@
-# PokemonApi
+# <img width=30px height=30px src="https://github.com/camilavitoriacosta/pokedex/blob/master/src/icones/icon_pokebola.png" alt="pokebola"> [PokemonApi](https://camilavitoriacosta.github.io/PokemonApi/)
 Projeto realizado para estudo de consumo de API externa com pesquisas de forma dinâmica.
 
 ## Linguagens Utilizadas
